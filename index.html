@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Шмагайло Марія Євгеніївна">
     <title>Картинна Галерея - Головна</title>
+ 
+    <!-- Зовнішній CSS -->
+    <link rel="stylesheet" href="style.css">
+ 
+    <!-- Стиль рівня документу: перевизначення посилань -->
+    <style>
+        a {
+            color: #c9a84c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #5c3d2e;
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
-<!-- Кольори сторінки через атрибути body: фон, текст, посилання -->
+ 
 <body bgcolor="#faf7f2" text="#3a2a1e" link="#7a4f3a" vlink="#5c3d2e" alink="#c9a84c">
-
-<!-- Головний заголовок -->
+ 
 <h1>Картинна Галерея</h1>
 <hr>
-
-<!-- Навігаційне меню між сторінками; поточна сторінка виділена <b> -->
+ 
 <p>
     <a href="index.html"><b>Головна</b></a> |
     <a href="artists.html">Художники</a> |
@@ -22,95 +35,74 @@
     <a href="contacts.html">Контакти</a>
 </p>
 <hr>
-
-<!-- Навігація по якорях: посилання на секції цієї сторінки та інших -->
+ 
 <h3>Навігація по сторінці:</h3>
 <ul>
-    <!-- Перехід до якоря #about на цій сторінці -->
     <li><a href="#about">&#8595; Про галерею</a></li>
-    <!-- Перехід до якоря #images на цій сторінці -->
     <li><a href="#images">&#8595; Зображення</a></li>
-    <!-- Перехід до якоря #lists на цій сторінці -->
     <li><a href="#lists">&#8595; Списки</a></li>
-    <!-- Перехід до якоря на іншій сторінці -->
     <li><a href="artists.html#impressionism">&#8594; Імпресіонізм (сторінка Художники)</a></li>
-    <!-- Зовнішнє посилання; target="_blank" — відкриває нову вкладку -->
     <li><a href="https://uk.wikipedia.org/wiki/Живопис" target="_blank">&#8594; Живопис &#8212; Вікіпедія</a></li>
 </ul>
 <hr>
-
-<!-- Секція "Про галерею"; <a name="..."> — іменований якір -->
+ 
 <h2><a name="about">Про Галерею</a></h2>
-
-<!-- Текстові абзаци; <b> — жирний, <i> — курсив -->
+ 
 <p>
     Ласкаво просимо до <b>Картинної Галереї</b> &#8212; місця, де <i>мистецтво оживає</i> та розмовляє з кожним відвідувачем.
     Наша галерея зберігає твори визначних художників різних епох та напрямів &#8212; від класичного реалізму до сучасного авангарду.
 </p>
-<p>
+ 
+<!-- Внутрішній стиль до абзацу; !important використано для кольору тексту -->
+<p style="font-size: 15px; color: #5c3d2e !important; font-style: italic; margin: 10px 0; padding: 8px 12px; background-color: #f5f0e8; border-left: 4px solid #c9a84c;">
     Галерею засновано у <b>2005 році</b> з метою популяризації образотворчого мистецтва.
     Кожен твір у нашій збірці &#8212; це <i>вікно в особливий світ</i>, створений руками митця.
 </p>
+ 
 <p>
     Щороку галерею відвідують тисячі людей. Ми організовуємо <b>тематичні виставки</b>, <i>майстер-класи</i> та лекції з історії мистецтва.
 </p>
-
-<!-- Посилання на інші сторінки сайту -->
+ 
 <p>
     Детальніше: <a href="artists.html">Художники</a> |
     <a href="collections.html">Колекції</a> |
     <a href="contacts.html">Контакти</a>
 </p>
 <hr>
-
-<!-- Секція зображень; якір #images -->
+ 
 <h2><a name="images">Зображення</a></h2>
-
-<!-- <center> центрує таблицю по горизонталі (HTML-атрибутний спосіб без CSS) -->
-<!-- Таблиця без рамки використовується щоб розмістити зображення в один рядок -->
+ 
 <center>
 <table border="0" cellspacing="20" cellpadding="0">
     <tr valign="middle">
-
-        <!-- Клітинка 1: зображення зменшено вдвічі (90x135, оригінал ~180x270) -->
         <td align="center">
-            <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+            <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
                      alt="Мона Ліза" width="90" height="135"
                      title="Натисніть для перегляду у повному розмірі" border="1">
-            </a><br>
-          
+            </a>
         </td>
-
-        <!-- Клітинка 2: базовий розмір (180x135) -->
         <td align="center">
             <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
                      alt="Зоряна ніч" width="180" height="135"
                      title="Натисніть для перегляду у повному розмірі" border="1">
-            </a><br>
-           
+            </a>
         </td>
-
-        <!-- Клітинка 3: зображення збільшено вдвічі (360x240, оригінал ~180x120) -->
         <td align="center">
             <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1280px-Tsunami_by_hokusai_19th_century.jpg" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1280px-Tsunami_by_hokusai_19th_century.jpg"
                      alt="Велика хвиля" width="360" height="240"
                      title="Натисніть для перегляду у повному розмірі" border="1">
-            </a><br>
-          
+            </a>
         </td>
-
     </tr>
 </table>
 </center>
 <hr>
-
-<!-- Секція списків; якір #lists -->
+ 
 <h2><a name="lists">Списки</a></h2>
-
-<!-- Маркований список; type="disc" — суцільний круглий маркер -->
+ 
 <h3>Жанри живопису :</h3>
 <ul type="disc">
     <li>Портрет &#8212; зображення людини або групи людей</li>
@@ -119,8 +111,7 @@
     <li>Жанровий живопис &#8212; сцени з повсякденного життя</li>
     <li>Історичний живопис &#8212; зображення подій минулого</li>
 </ul>
-
-<!-- Маркований список; type="square" — квадратний маркер -->
+ 
 <h3>Техніки малювання :</h3>
 <ul type="square">
     <li>Олія &#8212; традиційна техніка живопису</li>
@@ -128,8 +119,7 @@
     <li>Гуаш &#8212; непрозорі водяні фарби</li>
     <li>Темпера &#8212; фарби на яєчній основі</li>
 </ul>
-
-<!-- Нумерований список; type="1" — арабські цифри -->
+ 
 <h3>Відомі музеї світу :</h3>
 <ol type="1">
     <li>Лувр, Париж &#8212; найбільший музей світу</li>
@@ -138,8 +128,7 @@
     <li>Уффіці, Флоренція</li>
     <li>Прадо, Мадрид</li>
 </ol>
-
-<!-- Нумерований список; type="I" — римські цифри -->
+ 
 <h3>Епохи мистецтва :</h3>
 <ol type="I">
     <li>Давньогрецьке та римське мистецтво</li>
@@ -149,8 +138,7 @@
     <li>Імпресіонізм та постімпресіонізм (XIX ст.)</li>
     <li>Мистецтво XX&#8211;XXI ст.</li>
 </ol>
-
-<!-- Список визначень: <dt> — термін, <dd> — його опис -->
+ 
 <h3>Терміни мистецтва :</h3>
 <dl>
     <dt><b>Імпресіонізм</b></dt>
@@ -162,10 +150,10 @@
     <dt><b>Реалізм</b></dt>
     <dd>Правдиве відображення дійсності у мистецтві</dd>
 </dl>
-
+ 
 <hr>
-<!-- Підвал сторінки -->
 <p><i>&#169; 2024 Картинна Галерея | Шмагайло Марія Євгеніївна</i></p>
-
+ 
 </body>
 </html>
+ 

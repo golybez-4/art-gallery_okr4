@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Шмагайло Марія Євгеніївна">
     <title>Художники - Картинна Галерея</title>
+ 
+    <!-- Зовнішній CSS -->
+    <link rel="stylesheet" href="style.css">
+ 
+    <!-- Стиль рівня документу: перевизначення посилань -->
+    <style>
+        a {
+            color: #5c3d2e;
+            text-decoration: underline;
+            font-style: italic;
+        }
+        a:hover {
+            color: #c9a84c;
+        }
+    </style>
 </head>
-
-<!-- Кольори сторінки через атрибути body -->
+ 
 <body bgcolor="#faf7f2" text="#3a2a1e" link="#7a4f3a" vlink="#5c3d2e" alink="#c9a84c">
-
-<!-- Головний заголовок -->
+ 
 <h1>Видатні Художники</h1>
 <hr>
-
-<!-- Навігаційне меню; поточна сторінка виділена <b> -->
+ 
 <p>
     <a href="index.html">Головна</a> |
     <a href="artists.html"><b>Художники</b></a> |
@@ -22,15 +34,13 @@
     <a href="contacts.html">Контакти</a>
 </p>
 <hr>
-
-<!-- Текстові абзаци з форматуванням: <b> — жирний, <i> — курсив -->
+ 
 <p>
     <b>Художник</b> &#8212; людина, яка за допомогою фарб, олівця чи інших матеріалів створює
     <i>зображення, що відображають красу світу</i> і внутрішній світ митця.
     Протягом тисячоліть художники документували історію, культуру та емоції людства.
 </p>
-
-<!-- Іменований якір: ціль посилання artists.html#impressionism з index.html -->
+ 
 <p>
     <a name="impressionism"></a>
     <b>Імпресіонізм</b> &#8212; один із найвпливовіших напрямів у живописі, що виник у Франції
@@ -38,31 +48,24 @@
     від побаченого, гру світла та кольору. Клод Моне, Едгар Деґа, П'єр-Огюст Ренуар &#8212;
     найяскравіші представники цього напряму.
 </p>
-
-<!-- Внутрішнє посилання на якір + зовнішнє посилання -->
-<p>
+ 
+<!-- Внутрішній стиль до абзацу; !important для розміру шрифту -->
+<p style="font-size: 14px !important; color: #7a4f3a; padding: 6px 10px; background-color: #fff8ee; border: 1px solid #d4c5a9;">
     Дізнатися більше: <a href="index.html#lists">список на головній сторінці</a> або
     <a href="https://uk.wikipedia.org/wiki/%D0%86%D0%BC%D0%BF%D1%80%D0%B5%D1%81%D1%96%D0%BE%D0%BD%D1%96%D0%B7%D0%BC" target="_blank">Вікіпедія: Імпресіонізм</a>.
 </p>
 <hr>
-
-<!-- Таблиця 3x4: border — рамка, cellspacing — відстань між клітинками, cellpadding — відступ всередині -->
-<h2> Художники та їх твори</h2>
-
+ 
+<h2>Художники та їх твори</h2>
+ 
 <table border="1" cellspacing="0" cellpadding="8" width="100%">
-
-    <!-- Підпис таблиці -->
     <caption><b>Відомі художники та їхні шедеври</b></caption>
-
-    <!-- Рядок-шапка: bgcolor — колір фону, <font color> — колір тексту -->
     <tr bgcolor="#5c3d2e">
         <th align="center"><font color="#e8d5a3">Художник</font></th>
         <th align="center"><font color="#e8d5a3">Відома картина</font></th>
         <th align="center"><font color="#e8d5a3">Напрям</font></th>
         <th align="center"><font color="#e8d5a3">Країна / Роки</font></th>
     </tr>
-
-    <!-- Рядок 1: зображення-посилання; border="0" прибирає рамку навколо картинки-посилання -->
     <tr>
         <td align="center">
             <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" target="_blank">
@@ -89,28 +92,22 @@
             </a>
         </td>
     </tr>
-
-    <!-- Рядок 2: гіперпосилання на Вікіпедію -->
     <tr bgcolor="#f5f0e8">
         <td align="center"><a href="https://uk.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BE%D0%BD%D0%B0%D1%80%D0%B4%D0%BE_%D0%B4%D0%B0_%D0%92%D1%96%D0%BD%D1%87%D1%96" target="_blank">Леонардо да Вінчі</a></td>
         <td align="center"><a href="https://uk.wikipedia.org/wiki/%D0%97%D0%BE%D1%80%D1%8F%D0%BD%D0%B0_%D0%BD%D1%96%D1%87" target="_blank">Зоряна ніч &#8212; Ван Гог</a></td>
         <td align="center"><a href="https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%96%D0%B9%D0%BE-%D0%B5" target="_blank">Хокусай &#8212; Укійо-е</a></td>
         <td align="center"><a href="https://uk.wikipedia.org/wiki/%D0%9C%D1%96%D0%BA%D0%B5%D0%BB%D0%B0%D0%BD%D0%B4%D0%B6%D0%B5%D0%BB%D0%BE" target="_blank">Мікеланджело</a></td>
     </tr>
-
-    <!-- Рядок 3: звичайний текст -->
     <tr>
         <td>Відродження, Італія, 1452&#8211;1519</td>
         <td>Постімпресіонізм, Нідерланди, 1853&#8211;1890</td>
         <td>Японський гравюрист, 1760&#8211;1849</td>
         <td>Скульптор і живописець, Флоренція, 1475&#8211;1564</td>
     </tr>
-
 </table>
-
+ 
 <hr>
-<!-- Підвал сторінки -->
 <p><i>&#169; 2024 Картинна Галерея | Шмагайло Марія Євгеніївна</i></p>
-
+ 
 </body>
 </html>
