@@ -3,7 +3,7 @@ body {
     background-color: #f0ebe3;
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 16px;
-    color: #3a2a1e;
+    color: #3a2a1e;            /* замінює застарілий атрибут text="" у <body> */
     line-height: 1.7;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body {
 h1 {
     font-size: 2em;
     color: #2c1a0e;
-    font-style: normal;
+    font-style: normal;        /* скасовує курсив, якщо він успадкований */
     font-weight: bold;
     line-height: 1.3;
     text-align: left;
@@ -65,31 +65,26 @@ hr + p {
     text-transform: uppercase;
 }
 
-/* менший відступ зверху: <h2> одразу після <hr> */
 hr + h2 {
     margin-top: 20px;
 }
 
-/* щільніше прилягає до заголовка: <p> одразу після <h2> */
 h2 + p {
     margin-top: 6px;
     font-size: 15px;
     color: #3a2a1e;
 }
 
-/* <p> одразу після <h3> */
 h3 + p {
     margin-top: 6px;
     font-size: 15px;
     color: #3a2a1e;
 }
 
-/* <table> одразу після <h2> */
 h2 + table {
     margin-top: 10px;
 }
 
-/* <ul> або <ol> одразу після <h3> */
 h3 + ul,
 h3 + ol {
     margin-top: 4px;
@@ -103,19 +98,16 @@ p a {
     font-style: italic;
 }
 
-/* <b> на будь-якій глибині всередині <td> */
 td b {
     color: #2c1a0e;
 }
 
-/* <a> на будь-якій глибині всередині <caption> */
 caption a {
     color: #c9a84c;
     text-decoration: none;
 }
 
-/* <dd> на будь-якій глибині всередині <dl>
-   (охоплює й вкладені <dl>, на відміну від dl > dd) */
+/* охоплює всі <dd>, навіть вкладені — на відміну від dl > dd */
 dl dd {
     font-style: italic;
     color: #3a2a1e;
@@ -129,27 +121,26 @@ ol li a {
 
 /* комбінація: сусідній (hr + p) + контекстний (a) */
 hr + p a {
-    display: inline-block;
+    display: inline-block;     /* дозволяє задавати padding для посилання */
     padding: 14px 18px;
     color: #5c3d2e;
-    font-style: normal;
+    font-style: normal;        /* скасовує курсив від p a вище */
     font-weight: normal;
     font-size: 13px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent; /* прозора лінія — місце для підсвічування */
 }
 
 /* активний пункт меню: hr + p → a → b */
 hr + p a b {
     color: #c9a84c;
-    font-weight: normal;
+    font-weight: normal;       /* скасовує стандартне жирне накреслення <b> */
     border-bottom: 2px solid #c9a84c;
     padding-bottom: 12px;
 }
 
-/* <a> всередині елемента з класом .note */
 .note a {
     color: #5c3d2e;
     font-weight: bold;
@@ -166,13 +157,11 @@ ul > li {
     padding-left: 4px;
 }
 
-/* лише прямі <li> в <ol> */
 ol > li {
     margin-bottom: 4px;
     padding-left: 4px;
 }
 
-/* лише прямий <dt> в <dl> */
 dl > dt {
     font-weight: bold;
     font-size: 1.05em;
@@ -180,14 +169,12 @@ dl > dt {
     margin-top: 8px;
 }
 
-/* лише прямий <dd> в <dl>
-   (dl dd вище охопить і вкладені, dl > dd — тільки прямі) */
+/* лише прямий <dd>; dl dd вище охоплює й вкладені */
 dl > dd {
     margin-left: 20px;
     margin-bottom: 6px;
 }
 
-/* <caption> — пряма дитина <table> */
 table > caption {
     font-size: 1em;
     font-weight: bold;
@@ -200,7 +187,7 @@ table > caption {
     letter-spacing: 0.02em;
 }
 
-/* лише прямий <i> в #page-footer, не торкається <i> у <span> */
+/* лише прямий <i>; якщо <i> вкладений у <span> — не спрацює */
 #page-footer > i {
     font-style: italic;
     color: #5c3d2e;
@@ -209,7 +196,7 @@ table > caption {
 
 /* ===== ПОСИЛАННЯ ===== */
 a {
-    color: #7a4f3a;
+    color: #7a4f3a;            /* замінює застарілий атрибут link="" у <body> */
     text-decoration: none;
     font-style: normal;
 }
@@ -230,15 +217,15 @@ dl {
 
 /* ===== ТАБЛИЦЯ ===== */
 table {
-    border-collapse: collapse;
-    width: calc(100% - 64px);
+    border-collapse: collapse; /* суміщує рамки сусідніх комірок в одну лінію */
+    width: calc(100% - 64px);  /* ширина з урахуванням бічних відступів */
     margin: 14px 32px;
     font-size: 15px;
     background-color: #ffffff;
     border: 1px solid #d4c5a9;
     box-shadow: 0 2px 10px rgba(44, 26, 14, 0.08);
     border-radius: 4px;
-    overflow: hidden;
+    overflow: hidden;          /* ховає вміст за межами заокруглених кутів */
 }
 
 th {
@@ -260,6 +247,100 @@ td {
     font-size: 15px;
 }
 
+/* ===== КЛАСИ ДЛЯ ТАБЛИЦЬ ===== */
+
+.table-header-row th {
+    background-color: #2c1a0e;
+    color: #e8d5a3;
+}
+
+.table-subheader-row th {
+    background-color: #5c3d2e;
+    color: #faf7f2;
+}
+
+.table-row-light td {
+    background-color: #f5f0e8;
+}
+
+.table-footer-row td {
+    background-color: #e8d5a3;
+    font-weight: normal;
+}
+
+.td-center { text-align: center; }
+.td-right  { text-align: right; }
+.th-middle { vertical-align: middle; }
+
+.td-highlight td {
+    background-color: #fff8ee;
+}
+
+.tr-alt td {
+    background-color: #f5f0e8;
+}
+
+.td-label {
+    white-space: nowrap;       /* не переносить текст мітки на новий рядок */
+    padding-right: 20px;
+}
+
+/* ===== ШИРИНИ КОЛОНОК ===== */
+.col-name  { width: 20%; }
+.col-dates { width: 12%; }
+.col-info  { width: 28%; }
+
+/* ===== ТАБЛИЦЯ КОНТАКТІВ ===== */
+.contacts-table {
+    border: none;
+    box-shadow: none;
+    width: auto;               /* ширина за вмістом, а не 100% */
+    margin: 0 32px;
+}
+
+.contacts-table td {
+    border: none;
+    padding: 6px 12px;
+}
+
+/* ===== РОЗМІРИ ЗОБРАЖЕНЬ ===== */
+.thumb-portrait  { width: 70px;  height: 105px; }
+.thumb-landscape { width: 120px; height: 90px;  }
+.thumb-wide      { width: 120px; height: 68px;  }
+.img-portrait    { width: 90px;  height: 135px; }
+.img-landscape-sm{ width: 180px; height: 135px; }
+.img-landscape-lg{ width: 360px; height: 240px; }
+
+/* ===== ГАЛЕРЕЯ ===== */
+.gallery-center {
+    text-align: center;
+    padding: 10px 32px;
+}
+
+.gallery-row {
+    display: inline-flex;
+    align-items: middle;
+    gap: 20px;                 /* замінює cellspacing="20" */
+}
+
+.gallery-cell {
+    text-align: center;
+}
+
+/* ===== IFRAME З КАРТОЮ ===== */
+.map-iframe {
+    width: 420px;
+    height: 300px;
+    float: right;
+    margin: 0 0 10px 20px;
+    border: 1px solid #d4c5a9;
+    box-shadow: 0 2px 10px rgba(44, 26, 14, 0.1);
+}
+
+.clear {
+    clear: both;               /* скасовує float після .map-iframe */
+}
+
 /* ===== МАРКОВАНИЙ СПИСОК ===== */
 ul {
     list-style-type: disc;
@@ -274,6 +355,10 @@ ul {
     border-radius: 3px;
 }
 
+ul.ul-square {
+    list-style-type: square;
+}
+
 /* ===== НУМЕРОВАНИЙ СПИСОК ===== */
 ol {
     list-style-type: decimal;
@@ -286,6 +371,10 @@ ol {
     color: #3a2a1e;
     line-height: 1.8;
     border-radius: 3px;
+}
+
+ol.ol-roman {
+    list-style-type: upper-roman;
 }
 
 /* ===== СПИСОК ВИЗНАЧЕНЬ ===== */
@@ -328,10 +417,6 @@ iframe {
     border: 1px solid #d4c5a9;
     box-shadow: 0 2px 10px rgba(44, 26, 14, 0.1);
     margin: 10px 32px;
-}
-
-center {
-    padding: 10px 32px;
 }
 
 /* ===== ЗОБРАЖЕННЯ ===== */

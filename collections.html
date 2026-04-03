@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Шмагайло Марія Євгеніївна">
     <title>Колекції - Картинна Галерея</title>
-     <!-- Зовнішній CSS -->
+
+    <!-- Зовнішній CSS -->
     <link rel="stylesheet" href="style.css">
+
     <!-- Стиль рівня документу: перевизначення посилань -->
-     <style>
-     a {
+    <style>
+        a {
             color: #3a2a1e;
             text-decoration: none;
             border-bottom: 1px dotted #7a4f3a;
@@ -18,7 +20,7 @@
             color: #c9a84c;
             border-bottom-color: #c9a84c;
         }
-     </style>
+    </style>
 </head>
 
 <body>
@@ -39,7 +41,8 @@
     Кожна колекція об'єднує твори певного напряму або епохи, дозволяючи відвідувачам
     <i>поглиблено ознайомитись</i> із конкретним художнім стилем.
 </p>
-<p style="line-height: 2 !important; color: #5c3d2e; padding: 8px 14px; background-color: #fff8ee; border-left: 3px solid #c9a84c; font-size: 15px;"></p>">
+
+<p style="line-height: 2 !important; color: #5c3d2e; padding: 8px 14px; background-color: #fff8ee; border-left: 3px solid #c9a84c; font-size: 15px;">
     Серед постійних виставок &#8212; <b>«Класики Відродження»</b>, <i>«Світло імпресіонізму»</i>
     та <b>«Сучасний погляд»</b>. Тимчасові виставки відбуваються щоквартально.
     Більше інформації: <a href="https://www.louvre.fr" target="_blank">сайт Лувру (партнер)</a>.
@@ -47,82 +50,71 @@
 </p>
 <hr>
 
-<h2> Огляд колекцій</h2>
+<h2>Огляд колекцій</h2>
 
-<table border="1" cellspacing="4" cellpadding="10" width="100%">
-
+<table class="collections-table">
     <caption><b>Каталог колекцій Картинної Галереї</b></caption>
 
     <colgroup>
-        <col width="20%">
-        <col width="12%" bgcolor="#fff8ee">
-        <col width="12%" bgcolor="#fff8ee">
-        <col width="28%" bgcolor="#fdf3e3">
-        <col width="28%" bgcolor="#fdf3e3">
+        <col class="col-name">
+        <col class="col-dates">
+        <col class="col-dates">
+        <col class="col-info">
+        <col class="col-info">
     </colgroup>
 
-    <tr bgcolor="#5c3d2e">
-        <th rowspan="2" valign="middle" align="center">
-            <font color="#e8d5a3">Колекція</font>
-        </th>
-        <th colspan="2" align="center">
-            <font color="#e8d5a3">Хронологія</font>
-        </th>
-        <th colspan="2" align="center">
-            <font color="#e8d5a3">Відомості</font>
-        </th>
+    <tr class="table-header-row">
+        <th rowspan="2" class="th-middle">Колекція</th>
+        <th colspan="2">Хронологія</th>
+        <th colspan="2">Відомості</th>
     </tr>
 
-    <tr bgcolor="#8b6e5a">
-        <th align="center"><font color="#faf7f2">Початок</font></th>
-        <th align="center"><font color="#faf7f2">Кінець</font></th>
-        <th align="center"><font color="#faf7f2">Кількість творів</font></th>
-        <th align="center"><font color="#faf7f2">Статус</font></th>
+    <tr class="table-subheader-row">
+        <th>Початок</th>
+        <th>Кінець</th>
+        <th>Кількість творів</th>
+        <th>Статус</th>
     </tr>
 
-    <tr align="center">
+    <tr class="td-center">
         <td>Класики Відродження</td>
         <td colspan="2">XV ст. &#8211; XVII ст.</td>
         <td>XVII ст.</td>
         <td>84 картини</td>
     </tr>
 
-    <tr align="left">
-        <td rowspan="2" valign="middle" align="center" bgcolor="#fff8ee">
-            <b>Імпресіонізм<br>&#38;<br>Постімпресіонізм</b>
-        </td>
+    <tr>
+        <td rowspan="2" class="td-center td-highlight"><b>Імпресіонізм<br>&#38;<br>Постімпресіонізм</b></td>
         <td>1860</td>
         <td>1886</td>
         <td>62 картини</td>
         <td>Постійна</td>
     </tr>
 
-    <tr align="right">
+    <tr class="td-right">
         <td>1886</td>
         <td>1910</td>
         <td>43 картини</td>
         <td>Постійна</td>
     </tr>
 
-    <tr align="left">
+    <tr>
         <td>Авангард XX ст.</td>
-        <td align="center">1905</td>
-        <td align="center">1970</td>
-        <td colspan="2" align="center" bgcolor="#fff8ee">
-            <i>Тимчасова виставка &#8212; до 31 грудня 2024</i>
-        </td>
+        <td class="td-center">1905</td>
+        <td class="td-center">1970</td>
+        <td colspan="2" class="td-center td-highlight"><i>Тимчасова виставка &#8212; до 31 грудня 2024</i></td>
     </tr>
 
     <tr>
-        <td align="center"><i>Сучасне мистецтво</i></td>
-        <td align="center">1970</td>
-        <td align="center">сьогодні</td>
-        <td align="center">120+ творів</td>
-        <td align="center"><b>Активна</b></td>
+        <td class="td-center"><i>Сучасне мистецтво</i></td>
+        <td class="td-center">1970</td>
+        <td class="td-center">сьогодні</td>
+        <td class="td-center">120+ творів</td>
+        <td class="td-center"><b>Активна</b></td>
     </tr>
 
-    <tr bgcolor="#e8d5a3">
-        <td colspan="5" align="center">
+    <tr class="table-footer-row">
+        <td colspan="5" class="td-center">
             Усього в постійних колекціях: <b>понад 500 творів</b> &nbsp;|&nbsp; Оновлено: грудень 2024
         </td>
     </tr>
