@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Шмагайло Марія Євгеніївна">
     <title>Картинна Галерея - Головна</title>
-
-    <!-- Зовнішній CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Стиль рівня документу: перевизначення посилань -->
     <style>
         a {
             color: #c9a84c;
@@ -24,16 +20,21 @@
 </head>
 
 <body>
+<!-- Блоковий елемент <div class="site-header"> — темна шапка сайту -->
+<div class="site-header">
+        <span class="site-title">Картинна Галерея</span>
+</div>
 
+<!-- Блоковий елемент <div class="site-nav"> — навігаційна панель -->
+<div class="site-nav">
+    <p>
+        <a href="index.html"><b>Головна</b></a> |
+        <a href="artists.html">Художники</a> |
+        <a href="collections.html">Колекції</a> |
+        <a href="contacts.html">Контакти</a>
+    </p>
+</div>
 <h1>Картинна Галерея</h1>
-<hr>
-
-<p>
-    <a href="index.html"><b>Головна</b></a> |
-    <a href="artists.html">Художники</a> |
-    <a href="collections.html">Колекції</a> |
-    <a href="contacts.html">Контакти</a>
-</p>
 <hr>
 
 <h3>Навігація по сторінці:</h3>
@@ -47,6 +48,11 @@
 <hr>
 
 <h2><a name="about">Про Галерею</a></h2>
+<!-- .float-info — плаваючий блок праворуч (float: right у CSS)
+     Текст абзацу обтікає його зліва -->
+    <div class="float-info">
+    <strong>Цікаво:</strong> галерею засновано у 2005 році. Щороку її відвідують понад 10 000 гостей.
+</div>
 
 <p>
     Ласкаво просимо до <b>Картинної Галереї</b> &#8212; місця, де <i>мистецтво оживає</i> та розмовляє з кожним відвідувачем.
@@ -60,7 +66,10 @@
 
 <p>
     Щороку галерею відвідують тисячі людей. Ми організовуємо <b>тематичні виставки</b>, <i>майстер-класи</i> та лекції з історії мистецтва.
+     <!-- Рядковий елемент <span class="highlight"> — виділяє слово без переносу рядка -->
+    <span class="highlight">майстер-класи</span> та лекції з історії мистецтва.
 </p>
+
 
 <p class="note">
     Детальніше: <a href="artists.html">Художники</a> |
@@ -73,13 +82,15 @@
 
 <div class="gallery-center">
     <div class="gallery-row">
+           <!-- .gallery-cell має position: relative, щоб .badge позиціонувався відносно нього -->
         <div class="gallery-cell">
-            <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
-                     alt="Мона Ліза"
-                     class="img-portrait"
-                     title="Натисніть для перегляду у повному розмірі">
-            </a>
+            <!-- .badge — абсолютно позиційований значок у кутку комірки -->
+    <div class="badge">Топ</div>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+           alt="Мона Ліза" class="img-portrait"
+           title="Натисніть для перегляду у повному розмірі">
+  </a>
         </div>
         <div class="gallery-cell">
             <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" target="_blank">
@@ -105,6 +116,7 @@
 
 <h3>Жанри живопису :</h3>
 <ul>
+    <!-- :first-child — перший <li> отримає жирний текст (через CSS) -->
     <li>Портрет &#8212; зображення людини або групи людей</li>
     <li>Пейзаж &#8212; зображення природи та місцевості</li>
     <li>Натюрморт &#8212; зображення предметів побуту</li>
@@ -141,6 +153,7 @@
 
 <h3>Терміни мистецтва :</h3>
 <dl>
+    <!-- dl > dt::before додає "▸ " перед кожним терміном через псевдоелемент -->
     <dt><b>Імпресіонізм</b></dt>
     <dd>Художній напрям, що передає миттєві враження від реальності</dd>
     <dt><b>Сюрреалізм</b></dt>

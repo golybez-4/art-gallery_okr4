@@ -8,13 +8,64 @@ body {
     margin: 0;
     padding: 0;
 }
+/* ===== ТЕМНА ШАПКА САЙТУ =====*/
+/* .site-header — блоковий <div>, темний фон для шапки*/
 
+.site-header{
+    background-color: #2c1a0e;
+    padding: 28px 48px 22px;
+    position: relative;
+}
+/* <span> всередині шапки — назва галереї */
+.site-header .site-title {
+    font-size: 2.2em;
+    color: #e8d5a3;
+    font-weight: bold;
+    letter-spacing: 0.01em;
+    margin: 0 0 6px 0;
+    display: block;
+}
+/* ===== НАВІГАЦІЙНА ПАНЕЛЬ =====*/
+/*  .site-nav — блоковий <div> із білим фоном під шапкою */
+.site-nav {
+    background-color: #fff;
+    border-bottom: 2px solid #e8d5a3;
+    padding: 0 40px;
+}
+
+.site-nav p {
+    margin: 0;
+    padding: 0;
+}
+/* ===== ПСЕВДОКЛАСИ ДЛЯ ПОСИЛАНЬ =====
+   :link    — посилання, яке ще не відвідували
+   :visited — вже відвідане посилання */
+   .site-nav a:link,
+.site-nav a:visited {
+    display: inline-block;
+    padding: 14px 18px;
+    color: #5c3d2e;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+/* :hover — стиль при наведенні миші */
+.site-nav a:hover {
+    color: #c9a84c;
+    border-bottom-color: #c9a84c;
+}
+
+/* :active — стиль у момент кліку */
+.site-nav a:active {
+    color: #2c1a0e;
+}
 /* ===== ЗАГОЛОВКИ ===== */
 h1 {
     font-size: 2em;
     color: #2c1a0e;
-    font-style: normal;        /* скасовує курсив, якщо він успадкований */
-    font-weight: bold;
+    font-style: normal;        
     line-height: 1.3;
     text-align: left;
     padding: 18px 32px 10px;
@@ -52,8 +103,6 @@ hr {
 
 
 /* ===== СУСІДНІ СЕЛЕКТОРИ (A + B) ===== */
-
-/* навігаційна панель: <p> одразу після <hr> */
 hr + p {
     margin: 0;
     padding: 0 32px;
@@ -64,27 +113,22 @@ hr + p {
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
-
 hr + h2 {
     margin-top: 20px;
 }
-
 h2 + p {
     margin-top: 6px;
     font-size: 15px;
     color: #3a2a1e;
 }
-
 h3 + p {
     margin-top: 6px;
     font-size: 15px;
     color: #3a2a1e;
 }
-
 h2 + table {
     margin-top: 10px;
 }
-
 h3 + ul,
 h3 + ol {
     margin-top: 4px;
@@ -92,51 +136,28 @@ h3 + ol {
 
 
 /* ===== КОНТЕКСТНІ СЕЛЕКТОРИ (A B) ===== */
+p a { font-style: italic; }
+td b { color: #2c1a0e; }
+caption a { color: #c9a84c; text-decoration: none; }
+dl dd { font-style: italic; color: #3a2a1e; }
+ol li a { color: #5c3d2e; font-weight: bold; }
 
-/* <a> на будь-якій глибині всередині <p> */
-p a {
-    font-style: italic;
-}
-
-td b {
-    color: #2c1a0e;
-}
-
-caption a {
-    color: #c9a84c;
-    text-decoration: none;
-}
-
-/* охоплює всі <dd>, навіть вкладені — на відміну від dl > dd */
-dl dd {
-    font-style: italic;
-    color: #3a2a1e;
-}
-
-/* ланцюжок ol → li → a */
-ol li a {
-    color: #5c3d2e;
-    font-weight: bold;
-}
-
-/* комбінація: сусідній (hr + p) + контекстний (a) */
 hr + p a {
-    display: inline-block;     /* дозволяє задавати padding для посилання */
+    display: inline-block;
     padding: 14px 18px;
     color: #5c3d2e;
-    font-style: normal;        /* скасовує курсив від p a вище */
+    font-style: normal;
     font-weight: normal;
     font-size: 13px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
-    border-bottom: 2px solid transparent; /* прозора лінія — місце для підсвічування */
+    border-bottom: 2px solid transparent;
 }
 
-/* активний пункт меню: hr + p → a → b */
 hr + p a b {
     color: #c9a84c;
-    font-weight: normal;       /* скасовує стандартне жирне накреслення <b> */
+    font-weight: normal;
     border-bottom: 2px solid #c9a84c;
     padding-bottom: 12px;
 }
@@ -148,20 +169,16 @@ hr + p a b {
     border-bottom: 1px dotted #c9a84c;
 }
 
-
 /* ===== ДОЧІРНІ СЕЛЕКТОРИ (A > B) ===== */
 
-/* лише прямі <li> в <ul>, вкладені списки не зачіпає */
 ul > li {
     margin-bottom: 4px;
     padding-left: 4px;
 }
-
 ol > li {
     margin-bottom: 4px;
     padding-left: 4px;
 }
-
 dl > dt {
     font-weight: bold;
     font-size: 1.05em;
@@ -169,12 +186,10 @@ dl > dt {
     margin-top: 8px;
 }
 
-/* лише прямий <dd>; dl dd вище охоплює й вкладені */
 dl > dd {
     margin-left: 20px;
     margin-bottom: 6px;
 }
-
 table > caption {
     font-size: 1em;
     font-weight: bold;
@@ -186,17 +201,14 @@ table > caption {
     border-bottom: 1px solid #d4c5a9;
     letter-spacing: 0.02em;
 }
-
-/* лише прямий <i>; якщо <i> вкладений у <span> — не спрацює */
 #page-footer > i {
     font-style: italic;
     color: #5c3d2e;
 }
 
-
 /* ===== ПОСИЛАННЯ ===== */
 a {
-    color: #7a4f3a;            /* замінює застарілий атрибут link="" у <body> */
+    color: #7a4f3a;            
     text-decoration: none;
     font-style: normal;
 }
@@ -217,17 +229,16 @@ dl {
 
 /* ===== ТАБЛИЦЯ ===== */
 table {
-    border-collapse: collapse; /* суміщує рамки сусідніх комірок в одну лінію */
-    width: calc(100% - 64px);  /* ширина з урахуванням бічних відступів */
+    border-collapse: collapse;
+    width: calc(100% - 64px);
     margin: 14px 32px;
     font-size: 15px;
     background-color: #ffffff;
     border: 1px solid #d4c5a9;
     box-shadow: 0 2px 10px rgba(44, 26, 14, 0.08);
     border-radius: 4px;
-    overflow: hidden;          /* ховає вміст за межами заокруглених кутів */
+    overflow: hidden;
 }
-
 th {
     background-color: #2c1a0e;
     color: #e8d5a3;
@@ -238,7 +249,6 @@ th {
     border: 1px solid #4a2e1a;
     letter-spacing: 0.04em;
 }
-
 td {
     padding: 8px 14px;
     border: 1px solid #e0d5c5;
@@ -253,35 +263,28 @@ td {
     background-color: #2c1a0e;
     color: #e8d5a3;
 }
-
 .table-subheader-row th {
     background-color: #5c3d2e;
     color: #faf7f2;
 }
-
 .table-row-light td {
     background-color: #f5f0e8;
 }
-
 .table-footer-row td {
     background-color: #e8d5a3;
     font-weight: normal;
 }
-
 .td-center { text-align: center; }
 .td-right  { text-align: right; }
 .th-middle { vertical-align: middle; }
-
 .td-highlight td {
     background-color: #fff8ee;
 }
-
 .tr-alt td {
     background-color: #f5f0e8;
 }
-
 .td-label {
-    white-space: nowrap;       /* не переносить текст мітки на новий рядок */
+    white-space: nowrap;       
     padding-right: 20px;
 }
 
@@ -294,7 +297,7 @@ td {
 .contacts-table {
     border: none;
     box-shadow: none;
-    width: auto;               /* ширина за вмістом, а не 100% */
+    width: auto;               
     margin: 0 32px;
 }
 
@@ -316,13 +319,11 @@ td {
     text-align: center;
     padding: 10px 32px;
 }
-
 .gallery-row {
     display: inline-flex;
     align-items: middle;
-    gap: 20px;                 /* замінює cellspacing="20" */
+    gap: 20px;                 
 }
-
 .gallery-cell {
     text-align: center;
 }
@@ -336,9 +337,8 @@ td {
     border: 1px solid #d4c5a9;
     box-shadow: 0 2px 10px rgba(44, 26, 14, 0.1);
 }
-
 .clear {
-    clear: both;               /* скасовує float після .map-iframe */
+    clear: both;               
 }
 
 /* ===== МАРКОВАНИЙ СПИСОК ===== */
@@ -423,4 +423,83 @@ iframe {
 img {
     border: 1px solid #d4c5a9;
     box-shadow: 0 2px 6px rgba(44, 26, 14, 0.12);
+}
+
+
+/* ===== ПЛАВАЮЧИЙ БЛОК (float) =====*/
+/*.float-info — блок з цікавим фактом, плаває праворуч від тексту
+float: right виштовхує блок вправо, решта тексту обтікає його зліва */
+.float-info {
+    float: right;
+    width: 220px;
+    background-color: #fff8ee;
+    border: 1px solid #d4c5a9;
+    border-left: 3px solid #c9a84c;
+    padding: 12px 16px;
+    margin: 0 0 14px 20px;
+    font-size: 14px;
+    color: #5c3d2e;
+    line-height: 1.6;
+}
+
+
+/*  ===== ПОЗИЦІЙОВАНИЙ БЛОК (position: absolute) =====*/
+/* .badge — значок "Топ" на картках галереї
+position: absolute дозволяє розмістити його точно в куті відносно батьківського .gallery-cell
+(батьківський елемент повинен мати position: relative) */
+.gallery-cell {
+    text-align: center;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background-color: #c9a84c;
+    color: #2c1a0e;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== ПСЕВДОКЛАС :first-child =====*/
+/* Перший <li> у будь-якому списку отримує золотисту позначку замість стандартної
+   :first-child вибирає елемент лише якщо він перший серед братів */
+ul > li:first-child,
+ol > li:first-child {
+    color: #2c1a0e;
+    font-weight: bold;
+}
+/* ===== ПСЕВДОЕЛЕМЕНТ ::before =====*/
+ /*::before додає вміст ПЕРЕД текстом елемента — без зміни HTML
+   Тут перед кожним <dt> у словнику додається іконка "▸" */
+dl > dt::before {
+    content: "▸ ";
+    color: #c9a84c;
+}
+
+/* ===== ПСЕВДОЕЛЕМЕНТ ::after =====*/
+  /*::after додає вміст ПІСЛЯ тексту елемента — без зміни HTML
+   Тут після кожного заголовку h2 додається декоративна лінія */
+h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #c9a84c;
+    margin-top: 4px;
+}
+/* ===== РЯДКОВИЙ ЕЛЕМЕНТ <span> =====*/
+   /*.highlight — рядковий <span> для виділення окремого слова або фрази у тексті
+   Рядковий елемент не переносить текст на новий рядок */
+.highlight {
+    background-color: #fff3cc;
+    color: #2c1a0e;
+    font-weight: bold;
+    padding: 0 3px;
+    border-radius: 2px;
 }
