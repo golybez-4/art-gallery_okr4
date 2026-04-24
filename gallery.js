@@ -56,3 +56,21 @@ function changeBackgroundFor30s() {
         document.body.style.color = originalColor;
     }, 30000);
 }
+
+
+// --- 5. Створення текстового вузла ---
+function addTextNode() {
+    var textNode = document.createTextNode("Вітаємо у галереї!");
+    var paragraph = document.createElement("p");
+    paragraph.appendChild(textNode);
+    document.body.appendChild(paragraph);
+}
+
+// --- 6. Створення вузла елемента ---
+function createNewElement() {
+    var newDiv = document.createElement("div");
+    newDiv.innerHTML = "Нова виставка!";
+    newDiv.style.padding = "10px";
+    newDiv.style.backgroundColor = "#f0e8dc";
+    document.body.appendChild(newDiv);
+}
