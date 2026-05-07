@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Шмагайло Марія Євгеніївна">
-    <title>Колекції - Картинна Галерея</title>
+    <title>Колекції — Картинна Галерея</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* ── Локальні посилання ── */
         a {
             color: #3a2a1e;
             text-decoration: none;
@@ -15,6 +16,143 @@
         a:hover {
             color: #c9a84c;
             border-bottom-color: #c9a84c;
+        }
+
+        /* ── Стилі для mouseover/mouseout: підсвічування рядка та комірки таблиці ── */
+        .row-hovered td {
+            background-color: #fff3d6 !important;
+            transition: background-color 0.2s;
+        }
+        .cell-hovered {
+            outline: 2px solid #c9a84c;
+            outline-offset: -2px;
+        }
+
+        /* ── Стиль для mouseover/mouseout: підсвічування елемента списку ── */
+        .li-hovered {
+            background-color: #fff8ee;
+            border-radius: 3px;
+            padding-left: 6px;
+            transition: background-color 0.2s, padding-left 0.15s;
+        }
+
+        /* ── Стиль для mouseover/mouseout: підйом картки галереї ── */
+        .card-hovered {
+            transform: translateY(-4px) scale(1.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 24px rgba(44, 26, 14, 0.22);
+            z-index: 2;
+        }
+        /* Базовий перехід для картки (повернення до нормального стану) */
+        .gallery-cell {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: grab;
+        }
+
+        /* ── Стиль для mouseover/mouseout: зміна кольору заголовка ── */
+        .heading-hovered {
+            color: #c9a84c !important;
+            transition: color 0.2s;
+        }
+
+        /* ── Drag-and-drop: стиль клону-«привида», що слідує за курсором ── */
+        .drag-clone {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.85;
+            box-shadow: 0 12px 32px rgba(44, 26, 14, 0.35);
+            z-index: 9999;
+            border-radius: 4px;
+            transform: rotate(2deg) scale(1.04);
+            cursor: grabbing;
+        }
+
+        /* ── Drag-and-drop: стиль оригінальної картки під час перетягування ── */
+        .dragging-origin {
+            opacity: 0.35;
+            outline: 2px dashed #c9a84c;
+        }
+
+        /* ── Drag-and-drop: зона для скидання картки (.drop-zone) ── */
+        .drop-zone {
+            min-height: 160px;
+            border: 2px dashed #d4c5a9;
+            border-radius: 6px;
+            padding: 12px;
+            transition: border-color 0.2s, background-color 0.2s;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        /* ── Drag-and-drop: підсвічування зони при наведенні з карткою ── */
+        .drop-target {
+            border-color: #c9a84c !important;
+            background-color: #fff8ee !important;
+        }
+
+        /* ── Секція галереї ── */
+        .gallery-section {
+            padding: 0 32px 24px;
+        }
+        .gallery-section-title {
+            font-family: Georgia, serif;
+            font-size: 1em;
+            color: #7a4f3a;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0 0 10px 0;
+            padding-top: 14px;
+        }
+        .dnd-wrapper {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .zone-label {
+            font-size: 11px;
+            color: #a08060;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+        .zone-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* ── Картка картини (drag-and-drop елемент) ── */
+        .painting-card {
+            background: #fff;
+            border: 1px solid #d4c5a9;
+            border-radius: 4px;
+            padding: 8px;
+            width: 150px;
+            box-shadow: 0 2px 8px rgba(44, 26, 14, 0.1);
+            cursor: grab;
+            user-select: none; /* забороняємо виділення тексту при перетягуванні */
+        }
+        .painting-card:active { cursor: grabbing; }
+        .painting-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+        .painting-card-title {
+            font-size: 12px;
+            color: #3a2a1e;
+            margin-top: 6px;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        .painting-card-year {
+            font-size: 11px;
+            color: #a08060;
+            text-align: center;
         }
     </style>
 </head>
@@ -58,6 +196,7 @@
 </p>
 <hr>
 
+<!-- Таблиця: обробники mouseover/mouseout підсвічують рядки та комірки при наведенні -->
 <h2>Огляд колекцій</h2>
 
 <table class="collections-table">
@@ -126,11 +265,97 @@
             Усього в постійних колекціях: <b>понад 500 творів</b> &nbsp;|&nbsp; Оновлено: грудень 2024
         </td>
     </tr>
-
 </table>
+
+<hr>
+
+<!-- СЕКЦІЯ DRAG-AND-DROP
+     Картки (.draggable-card) перетягуються між двома .drop-zone
+     за допомогою подій mousedown → mousemove → mouseup
+     Обробники реалізовані в interactions.js -->
+<h2>Вибране з колекцій</h2>
+<p>Оберіть твори для особистої добірки — перетягніть картки до розділу «Моя добірка».</p>
+
+<div class="gallery-section">
+    <div class="dnd-wrapper">
+
+        <!-- Зона 1: початкове розташування карток (drop-zone — джерело) -->
+        <div class="zone-col">
+            <div class="zone-label">Постійна колекція</div>
+            <div class="drop-zone" id="zone-main">
+
+                <!-- Картка 1: елемент для перетягування (draggable-card) -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/330px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                        alt="Мона Ліза">
+                    <div class="painting-card-title">Мона Ліза</div>
+                    <div class="painting-card-year">Леонардо да Вінчі · ~1503</div>
+                </div>
+
+                <!-- Картка 2 -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+                        alt="Зоряна ніч">
+                    <div class="painting-card-title">Зоряна ніч</div>
+                    <div class="painting-card-year">Ван Гог · 1889</div>
+                </div>
+
+                <!-- Картка 3 -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/1/15/Camille_Pissarro_-_Boulevard_Montmartre_-_Eremitage.jpg"
+                        alt="Бульвар Монмартр">
+                    <div class="painting-card-title">Бульвар Монмартр</div>
+                    <div class="painting-card-year">Піссарро · 1897</div>
+                </div>
+
+                <!-- Картка 4 -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Scream.jpg/1280px-The_Scream.jpg"
+                        alt="Крик">
+                    <div class="painting-card-title">Крик</div>
+                    <div class="painting-card-year">Мунк · 1893</div>
+                </div>
+
+                <!-- Картка 5 -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1280px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg"
+                        alt="Створення Адама">
+                    <div class="painting-card-title">Створення Адама</div>
+                    <div class="painting-card-year">Мікеланджело · 1512</div>
+                </div>
+
+                <!-- Картка 6 -->
+                <div class="gallery-cell draggable-card painting-card">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg"
+                        alt="Враження. Схід сонця">
+                    <div class="painting-card-title">Враження. Схід сонця</div>
+                    <div class="painting-card-year">Моне · 1872</div>
+                </div>
+
+            </div><!-- /drop-zone zone-main -->
+        </div>
+
+        <!-- Зона 2: ціль для drag-and-drop (порожня drop-zone) -->
+        <div class="zone-col">
+            <div class="zone-label">Моя добірка</div>
+            <div class="drop-zone" id="zone-favorites">
+                <!-- Картки потрапляють сюди після перетягування -->
+            </div>
+        </div>
+
+    </div><!-- /dnd-wrapper -->
+</div><!-- /gallery-section -->
 
 <hr>
 <p><i>&#169; 2024 Картинна Галерея | Шмагайло Марія Євгеніївна</i></p>
 
+<!-- Підключення обробників подій миші (mouseover, mouseout, drag-and-drop) -->
+<script src="interactions.js"></script>
 </body>
 </html>
